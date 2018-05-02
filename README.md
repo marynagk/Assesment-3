@@ -82,7 +82,7 @@ _**User is able to add recommendation for the goal**_
 - And my recommendation should be shown on the page
 - And the recommendation should also be visible to the goal's author
 
-_** User is able to add his or her goal **_
+_**User is able to add his or her goal**_
 
 As a user I want to share with others my goals/dreams to find someone who can help me
 
@@ -104,6 +104,7 @@ As a user I want to share with others my goals/dreams to find someone who can he
 - And if the goal has been activated it should also become visible to other users
 
 _**User is able to make a donation to charity**_
+
 As a user I want to be able to make a donation to charity if someone has helped me to achieve my goal to demonstrate how much I value the help I've got
 
 **Feature:** Donate
