@@ -13,3 +13,14 @@
  */
 
 @import "bootstrap";
+
+body {
+    background-color: black;
+}
+
+.faces {
+background-image: url("faces.jpg");
+height: 100%;
+width: 100%;
+margin-left: 4em;
+}
