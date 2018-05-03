@@ -125,10 +125,10 @@ As a user I want to be able to make a donation to charity if someone has helped 
 - And I then get to my Profile page
 - And if the payment has been successful the project metrics are updated to reflect the donation made
 
-##Workflow
+## Workflow
 
 ![User workflow diagram](/readme_resources/Pages_sequence.png)
 
-##ERD
+## ERD
 
 ![Entity Relationship Diagram](/readme_resources/ERD.jpg)
