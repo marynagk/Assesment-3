@@ -30,5 +30,5 @@
   <%= @expertise.status %>
 </p>
 
-<%= link_to 'Edit', edit_expertise_path(@expertise) %> |
-<%= link_to 'Back', expertises_path %>
+<%= link_to 'Edit', edit_user_expertise_path(@expertise.user, @expertise) %> |
+<%= link_to 'Back', user_expertises_path(@expertise.user) %>
