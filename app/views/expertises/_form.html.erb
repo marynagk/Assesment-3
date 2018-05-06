@@ -1,11 +1,11 @@
-<%= form_with(model: expertise, local: true) do |form| %>
-  <% if expertise.errors.any? %>
+<%= form_for([@expertise.user, @expertise]) do |form| %>
+  <% if @expertise.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(expertise.errors.count, "error") %> prohibited this expertise from being saved:</h2>
+      <h2><%= pluralize(@expertise.errors.count, "error") %> prohibited this expertise from being saved:</h2>
 
       <ul>
-      <% expertise.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @expertise.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
