@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @expertise.tags %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @expertise.user_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @expertise.category_id %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @expertise.image %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @expertise.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @expertise.status %>
+</p>
+
+<%= link_to 'Edit', edit_expertise_path(@expertise) %> |
+<%= link_to 'Back', expertises_path %>
