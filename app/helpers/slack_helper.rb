@@ -3,7 +3,8 @@ module SlackHelper
 
     client_id = ENV['SLACK_CLIENT_ID']
     # url = 'http://localhost:3000/login'
-    url = 'https://cagang.herokuapp.com/login'
+    # url = 'https://cagang.herokuapp.com/login'
+    url = login_url
     scope = 'identity.basic,identity.avatar'
     team = 'T98FPAUH5"'
 
