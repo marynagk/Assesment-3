@@ -4,8 +4,9 @@ class CreateExpertises < ActiveRecord::Migration[5.2]
       t.text :tags
       t.integer :user_id
       t.integer :category_id
+      t.string :image
       t.text :description
-      t.integer :status
+      t.integer :status, :default => 0
 
       t.timestamps
     end

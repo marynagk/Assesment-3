@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_06_083534) do
+ActiveRecord::Schema.define(version: 2018_05_06_090509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,21 @@ ActiveRecord::Schema.define(version: 2018_05_06_083534) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "text"
+    t.integer "author_id"
+    t.integer "recommendation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "expertises", force: :cascade do |t|
     t.text "tags"
     t.integer "user_id"
     t.integer "category_id"
+    t.string "image"
     t.text "description"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,8 +44,17 @@ ActiveRecord::Schema.define(version: 2018_05_06_083534) do
     t.text "tags"
     t.integer "user_id"
     t.integer "category_id"
+    t.string "image"
     t.text "description"
-    t.integer "status"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.text "text"
+    t.integer "author_id"
+    t.integer "goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
