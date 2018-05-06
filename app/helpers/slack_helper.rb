@@ -6,9 +6,9 @@ module SlackHelper
     # url = 'https://cagang.herokuapp.com/login'
     url = login_url
     scope = 'identity.basic,identity.avatar'
-    team = 'T98FPAUH5"'
+    team = 'T98FPAUH5'
 
-    %Q(<a href="https://slack.com/oauth/authorize?redirect_uri=#{url}&scope=#{scope}&client_id=#{client_id}&team=#{team}>
+    %Q(<a href="https://slack.com/oauth/authorize?redirect_uri=#{url}&scope=#{scope}&client_id=#{client_id}&team=#{team}">
       <img alt="Sign in with Slack" height="40" width="172" src="https://platform.slack-edge.com/img/sign_in_with_slack.png" srcset="https://platform.slack-edge.com/img/sign_in_with_slack.png 1x, https://platform.slack-edge.com/img/sign_in_with_slack@2x.png 2x" /></a>).html_safe
   end
 end
