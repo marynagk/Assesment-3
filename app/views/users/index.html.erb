@@ -4,29 +4,28 @@
 
 <table>
   <thead>
+    <%= @current_user %>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
       <th>Slack name</th>
       <th>Slack</th>
-      <th>Avatar</th>
+      <th>Small Avatar</th>
+      <th>Big Avatar</th>
       <th>Email</th>
-      <th>Password</th>
+      <th>Rating</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <%=sign_in_with_slack_link%>
+
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
         <td><%= user.slack_name %></td>
         <td><%= user.slack_id %></td>
-        <td><%= user.avatar %></td>
+        <td><%= user.small_avatar %></td>
+        <td><%= user.big_avatar %></td>
         <td><%= user.email %></td>
-        <td><%= user.password %></td>
+        <td><%= user.rating %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
