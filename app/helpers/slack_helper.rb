@@ -2,7 +2,8 @@ module SlackHelper
   def sign_in_with_slack_button
 
     client_id = ENV['SLACK_CLIENT_ID']
-    url = 'http://localhost:3000/login'
+    # url = 'http://localhost:3000/login'
+    url = 'https://cagang.herokuapp.com/login'
     scope = 'identity.basic,identity.avatar'
     team = 'T98FPAUH5"'
 

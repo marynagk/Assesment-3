@@ -8,7 +8,9 @@ class SessionController < ApplicationController
     client_id = ENV['SLACK_CLIENT_ID']
     client_secret = ENV['SLACK_CLIENT_SECRET']
     code = params[:code]
-    sign_in_with_slack_link="https://slack.com/api/oauth.access?redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin&scope=identity.basic,identity.avatar&client_id=#{client_id}&client_secret=#{client_secret}&code=#{code}"
+    # url = 'http://localhost:3000/login'
+    url = 'https://cagang.herokuapp.com/login'
+    sign_in_with_slack_link="https://slack.com/api/oauth.access?redirect_uri=#{url}&client_id=#{client_id}&client_secret=#{client_secret}&code=#{code}"
     response = RestClient.get(sign_in_with_slack_link)
     hash = JSON.parse response
     if user = User.find_by(slack_id: hash["user"]["id"]) then
