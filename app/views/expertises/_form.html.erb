@@ -28,7 +28,11 @@
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.text_field :image %>
+    <%= form.file_field :image %>
+  <div class="field">
+        <%= form.label "remove_image" %>
+      <%= form.check_box :remove_image %>
+  </div>
   </div>
 
   <div class="field">

@@ -36,6 +36,9 @@ class ExpertisesController < ApplicationController
 
   # PUT users/1/expertises/1
   def update
+    if params[:expertise][:remove_image]=="1"
+      @expertise.remove_image!
+    end
     if @expertise.update_attributes(expertise_params)
       redirect_to([@expertise.user, @expertise], notice: 'Expertise was successfully updated.')
     else

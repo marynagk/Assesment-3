@@ -17,6 +17,7 @@
 
 <p>
   <strong>Image:</strong>
+  <%= image_tag(@expertise.image.thumb.url) if @expertise.image? %>
   <%= @expertise.image %>
 </p>
 

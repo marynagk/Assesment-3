@@ -36,7 +36,8 @@ class GoalsController < ApplicationController
 
   # PUT users/1/goals/1
   def update
-    if params[:goal][:remove_image]
+    
+    if params[:goal][:remove_image]=="1"
       @goal.remove_image!
     end
     if @goal.update_attributes(goal_params)
