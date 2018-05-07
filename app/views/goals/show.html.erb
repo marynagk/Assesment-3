@@ -17,6 +17,7 @@
 
 <p>
   <strong>Image:</strong>
+  <%= image_tag(@goal.image.thumb.url) if @goal.image? %>
   <%= @goal.image %>
 </p>
 

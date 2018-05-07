@@ -16,6 +16,7 @@ class GoalsController < ApplicationController
   # GET users/1/goals/new
   def new
     @goal = @user.goals.build
+    @goal.image = params[:file]
   end
 
   # GET users/1/goals/1/edit
@@ -35,6 +36,9 @@ class GoalsController < ApplicationController
 
   # PUT users/1/goals/1
   def update
+    if params[:goal][:remove_image]
+      @goal.remove_image!
+    end
     if @goal.update_attributes(goal_params)
       redirect_to([@goal.user, @goal], notice: 'Goal was successfully updated.')
     else

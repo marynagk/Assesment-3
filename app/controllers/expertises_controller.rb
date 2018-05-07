@@ -11,11 +11,12 @@ class ExpertisesController < ApplicationController
   # GET users/1/expertises/1
   def show
   end
-  
+
 
   # GET users/1/expertises/new
   def new
     @expertise = @user.expertises.build
+    @expertise.image = params[:file]
   end
 
   # GET users/1/expertises/1/edit
