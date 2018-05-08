@@ -11,3 +11,5 @@ Category.create! name_for_goals: 'to implement', name_for_expertises: 'implement
 Category.create! name_for_goals: 'to learn', name_for_expertises: 'learning'
 Category.create! name_for_goals: 'to connect', name_for_expertises: 'connecting'
 Category.create! name_for_goals: 'to visit', name_for_expertises: 'visiting'
+Charity.destroy_all
+Charity.create! name: 'Garvan Institute of Medical Research', url: 'https://www.garvan.org.au/'
