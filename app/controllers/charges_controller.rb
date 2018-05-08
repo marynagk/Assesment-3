@@ -1,11 +1,15 @@
 class ChargesController < ApplicationController
+  before_action :authorize
   def new
-end
+  end
 
 def create
   # Amount in cents
-  @amount = 200
-
+  @amount = params[:amount].to_i
+  @user = current_user
+  @goal=Goal.find(flash[:id])
+  @charity=Charity.find(1)
+  byebug
   customer = Stripe::Customer.create(
     :email => params[:stripeEmail],
     :source  => params[:stripeToken]
@@ -14,9 +18,11 @@ def create
   charge = Stripe::Charge.create(
     :customer    => customer.id,
     :amount      => @amount,
-    :description => 'Rails Stripe customer',
-    :currency    => 'usd'
+    :description => "Donation for goal #{@goal.tags}",
+    :currency    => 'aud'
   )
+
+Donation.create(user_id: @user.id, goal_id: @goal.id, charity_id: @charity.id, amount: @amount/100, description: "Donation to #{@charity.name}")
 
 rescue Stripe::CardError => e
   flash[:error] = e.message

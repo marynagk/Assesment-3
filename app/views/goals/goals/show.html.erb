@@ -34,8 +34,6 @@
 <%= link_to 'Edit', edit_user_goal_path(@goal.user, @goal) %> |
 <%= link_to 'Back', user_goals_path(@goal.user) %>
 
-
-
 <%= form_tag charges_path do %>
   <article>
     <% if flash[:error].present? %>
@@ -46,12 +44,11 @@
     <label class="amount">
       <span>Amount: $2.36</span>
     </label>
-    <%= text_field_tag(:amount) %>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="<%= "Donation to #{Charity.find(1).name}" %>"
-          data-amount=<%= :amount %>
+          data-description="Donation to default charity"
+          data-amount="236"
           data-locale="auto"></script>
 <% end %>

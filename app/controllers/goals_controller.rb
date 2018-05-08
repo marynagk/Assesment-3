@@ -10,6 +10,7 @@ class GoalsController < ApplicationController
 
   # GET users/1/goals/1
   def show
+    flash[:id]=params[:id]
   end
 
 
@@ -36,7 +37,7 @@ class GoalsController < ApplicationController
 
   # PUT users/1/goals/1
   def update
-    
+
     if params[:goal][:remove_image]=="1"
       @goal.remove_image!
     end
