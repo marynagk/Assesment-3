@@ -12,6 +12,7 @@ def create
   flash[:user] = @goal.user
   flash[:goal] = @goal
   flash[:amount] = @amount
+  @email=params[:stripeEmail]
 
   customer = Stripe::Customer.create(
     :email => params[:stripeEmail],
@@ -25,7 +26,10 @@ def create
     :currency    => 'aud'
   )
 
-Donation.create(user_id: @current_user.id, goal_id: @goal.id, charity_id: @charity.id, amount: @amount/100.00, description: "Donation to #{@charity.name}")
+@donation=Donation.create(user_id: @current_user.id, goal_id: @goal.id, charity_id: @charity.id, amount: @amount/100.00, description: "Donation to #{@charity.name}")
+MyMailer.new_donation_notification(@donation).deliver
+MyMailer.thanks_for_donation(@donation, @email).deliver
+
 
 rescue Stripe::CardError => e
   flash[:error] = e.message
