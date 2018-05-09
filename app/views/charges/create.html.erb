@@ -1,1 +1,7 @@
-<h2>Thanks, you paid <strong>$2.36</strong>!</h2>
+<% @amount = flash[:amount] %>
+<h2>Thanks, you paid <strong><%= "#{flash[:amount]}" %></strong>!</h2>
+
+<!-- <% sleep(5) %> -->
+<% @user = flash[:user] %>
+<% @goal = flash[:goal] %>
+<%= link_to "Back", user_goal_path(@goal.user, @goal) %>

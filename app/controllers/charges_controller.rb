@@ -6,10 +6,13 @@ class ChargesController < ApplicationController
 def create
   # Amount in cents
   @amount = params[:amount].to_i
-  @user = current_user
+  @current_user = current_user
   @goal=Goal.find(flash[:id])
-  @charity=Charity.find(1)
-  byebug
+  @charity=Charity.last
+  flash[:user] = @goal.user
+  flash[:goal] = @goal
+  flash[:amount] = @amount
+
   customer = Stripe::Customer.create(
     :email => params[:stripeEmail],
     :source  => params[:stripeToken]
@@ -22,10 +25,10 @@ def create
     :currency    => 'aud'
   )
 
-Donation.create(user_id: @user.id, goal_id: @goal.id, charity_id: @charity.id, amount: @amount/100, description: "Donation to #{@charity.name}")
+Donation.create(user_id: @current_user.id, goal_id: @goal.id, charity_id: @charity.id, amount: @amount/100.00, description: "Donation to #{@charity.name}")
 
 rescue Stripe::CardError => e
   flash[:error] = e.message
-  redirect_to new_charge_path
+  redirect_to user_goal_path(@goal.user, @goal)
 end
 end
