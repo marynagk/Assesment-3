@@ -1,5 +1,5 @@
 <% @amount = flash[:amount] %>
-<h2>Thanks, you paid <strong><%= "#{flash[:amount]}" %></strong>!</h2>
+<h2>Thanks, you paid <strong><%= "AUD#{flash[:amount].to_i/100.00}" %></strong>!</h2>
 
 <!-- <% sleep(5) %> -->
 <% @user = flash[:user] %>
