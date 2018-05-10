@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Search goals</h1>
+<span>
+<%= form_tag(search_path) do %>
+Tags: <%= text_field_tag :tags, params[:tags] %>
+<%= submit_tag 'Search', name: nil %>
+<% end %>
+</span>
+<span>
+<%= form_tag(search_path) do %>
+Description: <%= text_field_tag :description, params[:description] %>
+<%= submit_tag 'Search', name: nil %>
+<% end %>
+</span
+
+<td><%= link_to 'test', search_path(:tags => 'test') %></td>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tags</th>
+      <th>User</th>
+      <th>Category</th>
+      <th>Image</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @goals.each do |goal| %>
+      <tr>
+        <td><%= goal.tags %></td>
+        <td><%= goal.user_id %></td>
+        <td><%= goal.category_id %></td>
+        <td><%= goal.image %></td>
+        <td><%= goal.description %></td>
+        <td><%= goal.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

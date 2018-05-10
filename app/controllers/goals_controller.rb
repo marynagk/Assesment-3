@@ -1,11 +1,21 @@
 class GoalsController < ApplicationController
   before_action :authorize
-  before_action :set_goals
+  before_action :set_goals, except: [:search]
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
   # GET users/1/goals
   def index
     @goals = @user.goals
+  end
+
+  def search
+    # byebug
+    if params[:description]
+      @goals = Goal.where('description LIKE ?', "%#{params[:description]}%")
+    elsif params[:tags]
+      @goals = Goal.where('tags LIKE ?', "%#{params[:tags]}%")
+    else @goals = Goal.all
+    end
   end
 
   # GET users/1/goals/1
