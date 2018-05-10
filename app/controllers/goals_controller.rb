@@ -55,7 +55,13 @@ class GoalsController < ApplicationController
     @goal = @user.goals.build(goal_params)
 
     if @goal.save
-      redirect_to([@goal.user, @goal], notice: 'Goal was successfully created.')
+      if publishing?
+        @goal.events.build(description: "published a new goal").save!
+        @goal.update(status: "1")
+        redirect_to([@goal.user, @goal], notice: 'Goal was successfully published.')
+      else
+        redirect_to([@goal.user, @goal], notice: 'Goal was successfully created.')
+      end
     else
       render action: 'new'
     end
@@ -67,10 +73,23 @@ class GoalsController < ApplicationController
     if params[:goal][:remove_image]=="1"
       @goal.remove_image!
     end
+    # if params[:goal][:activate]=="1"
+    #   # Event.create(@goal)!
+    #   @event=@goal.events.build
+    #   @event.description = "#{@goal.user.slack_name} published a new goal"
+    #   params[:goal][:status]="1"
+    #   @event.save!
+    # end
     if @goal.update_attributes(goal_params)
-      redirect_to([@goal.user, @goal], notice: 'Goal was successfully updated.')
+      if publishing?
+        @goal.events.build(description: "published a new goal").save!
+        @goal.update(status: "1")
+        redirect_to([@goal.user, @goal], notice: 'Goal was successfully published.')
+      else
+        redirect_to([@goal.user, @goal], notice: 'Goal was successfully updated.')
+      end
     else
-      render action: 'edit'
+    render action: 'edit'
     end
   end
 
@@ -93,6 +112,10 @@ class GoalsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def goal_params
-      params.require(:goal).permit(:tags, :image, :description, :category_id)
+      params.require(:goal).permit(:tags, :image, :description, :category_id, :status)
+    end
+
+    def publishing?
+      params[:commit] == "Publish"
     end
 end
