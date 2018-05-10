@@ -45,7 +45,16 @@
     <%= form.number_field :status %>
   </div>
 
+  <% if @expertise.status == 0 %>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Save as Draft" %>
   </div>
+  <div class="actions">
+    <%= form.submit "Publish" %>
+  </div>
+  <% else %>
+  <div class="actions">
+    <%= form.submit "Update" %>
+  </div>
+    <% end %>
 <% end %>

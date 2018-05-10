@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1>News Feed</h1>
+
+
+    <% @events.each do |event| %>
+      <div>
+        ----------------
+        <div><%= event.created_at %></div>
+        <div><%= event.eventable.user.slack_name %></div>
+        <div><%= event.description %></div>
+        <div><%= event.eventable.tags %></div>
+        <div><%= event.eventable.description %></div>
+
+      </div>
+    <% end %>
+
+<br>

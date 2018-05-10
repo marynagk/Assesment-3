@@ -28,7 +28,13 @@ class ExpertisesController < ApplicationController
     @expertise = @user.expertises.build(expertise_params)
 
     if @expertise.save
-      redirect_to([@expertise.user, @expertise], notice: 'Expertise was successfully created.')
+      if publishing?
+        @expertise.events.build(description: "published a new goal").save!
+        @expertise.update(status: "1")
+        redirect_to([@expertise.user, @expertise], notice: 'Experitise was successfully published.')
+      else
+        redirect_to([@expertise.user, @expertise], notice: 'Experise was successfully created.')
+      end
     else
       render action: 'new'
     end
@@ -40,7 +46,13 @@ class ExpertisesController < ApplicationController
       @expertise.remove_image!
     end
     if @expertise.update_attributes(expertise_params)
-      redirect_to([@expertise.user, @expertise], notice: 'Expertise was successfully updated.')
+      if publishing?
+        @expertise.events.build(description: "published a new goal").save!
+        @expertise.update(status: "1")
+        redirect_to([@expertise.user, @expertise], notice: 'Experitise was successfully published.')
+      else
+        redirect_to([@expertise.user, @expertise], notice: 'Experise was successfully updated.')
+      end
     else
       render action: 'edit'
     end
@@ -65,6 +77,11 @@ class ExpertisesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def expertise_params
-      params.require(:expertise).permit(:tags, :image, :description, :category_id)
+      params.require(:expertise).permit(:tags, :image, :description, :category_id, :status)
     end
+
+    def publishing?
+      params[:commit] == "Publish"
+    end
+    
 end
