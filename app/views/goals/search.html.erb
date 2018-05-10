@@ -12,10 +12,17 @@ Tags: <%= text_field_tag :tags, params[:tags] %>
 Description: <%= text_field_tag :description, params[:description] %>
 <%= submit_tag 'Search', name: nil %>
 <% end %>
-</span
+</span>
+----------------
+<p><strong>Goals tags:</strong></p>
 
-<td><%= link_to 'test', search_path(:tags => 'test') %></td>
-
+<% @tags.each do |category, tags| %>
+  <div><%= category %></div>
+      <% tags.each do |tag| %>
+  <div><%= link_to tag, search_path(:tags => tag) %></div>
+        <% end %>
+    <% end %>
+----------------</br>
 <table>
   <thead>
     <tr>
