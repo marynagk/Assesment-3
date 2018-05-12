@@ -1,16 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
   <strong>Slack name:</strong>
   <%= @user.slack_name %>
 </p>
@@ -21,19 +11,15 @@
 </p>
 
 <p>
-  <strong>Avatar:</strong>
-  <%= @user.avatar %>
+  <strong>Small Avatar:</strong>
+  <%= @user.small_avatar %>
 </p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @user.email %>
+  <strong>Big Avatar:</strong>
+  <%= @user.big_avatar %>
 </p>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @user.rating %>
-</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

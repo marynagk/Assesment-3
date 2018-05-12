@@ -1,39 +1,98 @@
 <p id="notice"><%= notice %></p>
 
-<% if @goal.user.id == @current_user.id then %>
-  <%= render 'donate' %>
-<% end %>
-<p>
-  <strong>Tags:</strong>
-  <%= @goal.tags %>
-</p>
+<div class="col-12" id="title1" >
+  <span style="color: #31C8F5;">CODER ACADEMY</span> <span style="color: #FFFFFF;">GANG</span>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @goal.user_id %>
-</p>
+  <div class="container p-0 m-5">
+<div class="row" >
 
-<p>
-  <strong>Category:</strong>
-  <%= @goal.category_id %>
-</p>
+  <div class="col-10 main">
+      <div class="container mt-2 mb-2 item">
+        <div class="row">
+      <div class="col-1 m-1">
+          <%= image_tag(@goal.user.small_avatar) %>
+      </div>
+      <div class="col-9">
+        <div class="row">
+          <%= link_to @goal.user.slack_name, user_path(@goal.user) %>
+        </div>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag(@goal.image.thumb.url) if @goal.image? %>
-  <%= @goal.image %>
-</p>
+        <div class="row">
+        <% if @goal.status == 0 then %>
+          <span class = "draft_status">DRAFT</span>
+        <% else %>
+          <%= @event.created_at %>
+        <% end %>
+        </div>
+      </div>
+      <div class="col-1 text-right mt-2">
+        <% if @goal.user == @current_user then %>
+        <span><%= button_to "Edit", edit_user_goal_path(@goal.user, @goal), :class => "btn btn-primary ml-3", :method => :get %></span>
+        <% end %>
+      </div>
+      </div>
 
-<p>
-  <strong>Description:</strong>
+
+<div class="row mb-2 goal_show_tools">
+  <% if @goal.user.id == @current_user.id then %>
+    <%= render 'donate' %>
+  <% end %>
+  </div>
+  <div class="row mb-3 ml-3 pt-2 pl-2">
+    <span>Tags: </span><% @goal.tags.split(",").each do |tag| %>
+  <span class="tag"><%= tag.strip %></span>
+  <% end %>
+  </div>
+
+  <div class="row mb-3 ml-1 mr-2 pt-2 pl-2">
   <%= @goal.description %>
-</p>
+  </div>
+  </div>
 
-<p>
-  <strong>Status:</strong>
-  <%= @goal.status %>
-</p>
+<div class = "container item">
 
-<%= link_to 'Edit', edit_user_goal_path(@goal.user, @goal) %> |
-<%= link_to 'Back', user_goals_path(@goal.user) %>
-</br>
+<div class="row mb-3">
+    <%= render 'recommendation' %>
+</div>
+
+  <% @recommendations.each do |r| %>
+  <div class="row mb-2">
+    <div class="col-1 ml-1 mt-1">
+        <div><%= image_tag(r.author.small_avatar, :class=> "circle_avatars") %></div>
+    </div>
+    <div class="col-10">
+      <div class="row">
+        <%= link_to r.author.slack_name, user_path(r.author) %>
+      </div>
+      <div class="row small">
+        <%= r.created_at.strftime("%m/%d/%Y")  %>
+      </div>
+      <div class="row">
+        <%= r.text %>
+      </div>
+      </div>
+</div>
+<% end %>
+
+</div>
+
+</div>
+
+  <div class="col-2 members">
+    <div class="row mb-2 ml-1">
+    <%= User.all.count %> gang mambers:
+    </div>
+    <% User.all.each do |user| %>
+    <div class="row mb-2">
+      <div class="col-25% ml-1">
+          <div><%= image_tag(user.small_avatar, :class=> "circle_avatars") %></div>
+      </div>
+      <div class="col-75% small user_name ml-1">
+          <%= link_to user.slack_name, user_path(user) %>
+        </div>
+  </div>
+  <% end %>
+    </div>
+  </div>
+      </div>
