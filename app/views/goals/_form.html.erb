@@ -36,8 +36,9 @@
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.label :description %><br />
+    <%= form.text_area :description, id: "some-textarea", class: 'wysihtml5', size: '90x15', style: "border-radius: 5px; box-shadow: 0 0 0 1px lightblue; border: 5px solid transparent;" %>
+
   </div>
 
   <div class="field">

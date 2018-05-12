@@ -16,7 +16,9 @@
   <% end %>
 
   <div class="field">
-    <%= form.text_area :text %>
+    <!-- <%= form.text_area :text %> -->
+    <%= form.text_area :text, id: "some-textarea", class: 'wysihtml5', size: '80x8', style: "border-radius: 5px; box-shadow: 0 0 0 1px lightblue; border: 5px solid transparent;" %>
+
   </div>
 
   <div class="actions">

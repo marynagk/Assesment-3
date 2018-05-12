@@ -34,11 +34,13 @@
       </div>
 
 
-<div class="row mb-2 goal_show_tools">
+
   <% if @goal.user.id == @current_user.id then %>
+  <div class="row mb-2 donate">
     <%= render 'donate' %>
+    </div>
   <% end %>
-  </div>
+
   <div class="row mb-3 ml-3 pt-2 pl-2">
     <span>Tags: </span><% @goal.tags.split(",").each do |tag| %>
   <span class="tag"><%= tag.strip %></span>
@@ -46,12 +48,12 @@
   </div>
 
   <div class="row mb-3 ml-1 mr-2 pt-2 pl-2">
-  <%= @goal.description %>
+  <%= raw @goal.description %>
   </div>
   </div>
 
 <div class = "container item">
-
+Recommendations:
 <div class="row mb-3">
     <%= render 'recommendation' %>
 </div>
@@ -69,7 +71,7 @@
         <%= r.created_at.strftime("%m/%d/%Y")  %>
       </div>
       <div class="row">
-        <%= r.text %>
+        <%= raw r.text %>
       </div>
       </div>
 </div>
@@ -96,3 +98,15 @@
     </div>
   </div>
       </div>
+
+      <script type="text/javascript">
+        $(document).ready(function(){
+
+          $('.wysihtml5').each(function(i, elem) {
+            // $('.textarea').wysihtml5();
+            $(elem).wysihtml5({ toolbar:{ "fa": true, "image": false } });
+          });
+
+        })
+
+      </script>

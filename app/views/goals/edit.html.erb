@@ -4,3 +4,15 @@
 
 <%= link_to 'Show', [@goal.user, @goal] %> |
 <%= link_to 'Back', user_goals_path(@goal.user) %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('.wysihtml5').each(function(i, elem) {
+      // $('.textarea').wysihtml5();
+      $(elem).wysihtml5({ toolbar:{ "fa": true, "image": false } });
+    });
+
+  })
+
+</script>
