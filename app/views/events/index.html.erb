@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12" id="title1" >
             <div class="ml-4 float-left">
-                <span style="color: #31C8F5;">CODER ACADEMY</span> <span class="text-white">GANG</span>
+                <span><%= link_to "CODER ACADEMY", newsfeed_path, style: "color: #31C8F5;" %></span> <span><%= link_to "GANG", newsfeed_path, class: "text-white" %></span>
             </div>
             <div class="float-right mr-4" style="font-size: 0.85rem;">
                     <%= image_tag(@current_user.small_avatar, :style=> "border-radius: 50%; width: 2.2rem;") %>

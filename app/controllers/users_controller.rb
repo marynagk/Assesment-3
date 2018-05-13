@@ -11,6 +11,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if @user == @current_user then
+      @goals = @user.goals
+      @expertises = @user.expertises
+    else
+      @goals = @user.goals.where('status = ?', 1)
+      @expertises = @user.expertises.where('status = ?', 1)
+    end
   end
 
   # GET /users/new
