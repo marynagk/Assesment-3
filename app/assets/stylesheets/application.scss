@@ -104,8 +104,10 @@ white-space: normal;
 
 
 #container1 {
-    background: url('faces.jpg') no-repeat center center;
+    background: url('faces.jpg') no-repeat top center;
     background-color: black;
+    background-size: 100%;
+
 }
 
 #title1 {
@@ -123,13 +125,15 @@ white-space: normal;
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 200px;
+    text-align: center;
 
     font-family: Raleway;
-    font-style: bold;
-    font-weight: 900;
+    font-weight: bold;
     font-size: 11px;
 
-    background-color: rgba(47, 47, 47, 0.8);
+    border-radius: 0.6rem;
+
+    background-color: rgba(47, 47, 47, 0.95);
 }
 
 .blog-header {
