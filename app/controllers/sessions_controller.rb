@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
     end
     @current_user = user
     session[:user_id] = @current_user.id
-    redirect_to users_path, notice: 'Successfully logged in'
+    redirect_to newsfeed_path, notice: 'Successfully logged in'
   end
 
   def destroy
