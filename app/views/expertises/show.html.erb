@@ -52,6 +52,7 @@
   <div class="row mb-3 ml-1 mr-2 pt-2 pl-2">
   <%= raw @expertise.description %>
   </div>
+  <%= image_tag(@expertise.image.thumb.url, :style=> "width: 100%;") if @expertise.image? %>
   </div>
 
 </div>

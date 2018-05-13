@@ -59,6 +59,7 @@
   <div class="row mb-3 ml-1 mr-2 pt-2 pl-2">
   <%= raw @goal.description %>
   </div>
+  <%= image_tag(@goal.image.thumb.url, :style=> "width: 100%;") if @goal.image? %>
   </div>
 
 <div class = "container item">
