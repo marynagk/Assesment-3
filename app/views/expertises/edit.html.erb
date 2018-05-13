@@ -1,6 +1,40 @@
-<h1>Editing Expertise</h1>
 
-<%= render 'form' %>
+<div class="container-fluid text-white mt-6">
+    <div class="row">
+        <div class="col-12" id="title1" >
+            <div class="ml-4 float-left">
+                <span><%= link_to "CODER ACADEMY", newsfeed_path, style: "color: #31C8F5;" %></span> <span><%= link_to "GANG", newsfeed_path, class: "text-white" %></span>
+            </div>
+            <div class="float-right mr-4" style="font-size: 0.85rem;">
+                    <%= image_tag(@current_user.small_avatar, :style=> "border-radius: 50%; width: 2.2rem;") %>
+                    <span class="mx-2"><%= link_to @current_user.slack_name, user_path(@current_user), :style=> "color: inherit;" %></span>
 
-<%= link_to 'Show', [@expertise.user, @expertise] %> |
-<%= link_to 'Back', user_expertises_path(@expertise.user) %>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 text-dark pb-4" style="background-color: #EAEAEA">
+      <div class="row"><div class="col-5"></div><div class="col-2 mt-3"><strong>EDIT EXPERTISE</strong></div><div class="col-5"></div></div>
+      <div class="m-4 bg-white p-4 rounded">
+
+        <%= render 'form' %>
+        <%= link_to 'Show', [@expertise.user, @expertise] %> |
+        <%= link_to 'Back', user_path(@expertise.user) %>
+
+    </div>
+
+</div>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('.wysihtml5').each(function(i, elem) {
+      // $('.textarea').wysihtml5();
+      $(elem).wysihtml5({ toolbar:{ "fa": true } });
+    });
+
+  })
+
+</script>

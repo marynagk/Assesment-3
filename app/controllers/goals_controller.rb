@@ -2,20 +2,21 @@ class GoalsController < ApplicationController
   before_action :authorize
   before_action :set_goals, except: [:search]
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_draft, only: [:show]
 
   # GET users/1/goals
   def index
     @goals = @user.goals
+
   end
 
   def search
     # byebug
-
+    @goals = Goal.where('status =? OR (status =? and user_id =?)', '1', '0', "#{@current_user.id}")
     if params[:description]
-      @goals = Goal.where('description LIKE ?', "%#{params[:description]}%")
+      @goals = @goals.where('description LIKE ?', "%#{params[:description]}%")
     elsif params[:tags]
-      @goals = Goal.where('tags LIKE ?', "%#{params[:tags]}%")
-    else @goals = Goal.all
+      @goals = @goals.where('tags LIKE ?', "%#{params[:tags]}%")
     end
 
     @tags = {}
@@ -37,6 +38,11 @@ class GoalsController < ApplicationController
   # GET users/1/goals/1
   def show
     flash[:id]=params[:id]
+    @event = Event.where('eventable_type = ? AND eventable_id = ?', "Goal", @goal.id).last
+    @event = @event || @goal
+    @recommendations = @goal.recommendations.all.order(created_at: :desc)
+    @recommendation = @goal.recommendations.build
+    @users = User.all.where('id !=?', @current_user.id)
   end
 
 
@@ -117,5 +123,13 @@ class GoalsController < ApplicationController
 
     def publishing?
       params[:commit] == "Publish"
+    end
+
+    def another_user_draft?
+        @goal.status == 0 && @current_user != @goal.user
+    end
+
+    def authorize_draft
+        redirect_to user_goals_path if another_user_draft?
     end
 end

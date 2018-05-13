@@ -11,6 +11,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if @user == @current_user then
+      @goals = @user.goals
+      @expertises = @user.expertises
+    else
+      @goals = @user.goals.where('status = ?', 1)
+      @expertises = @user.expertises.where('status = ?', 1)
+    end
   end
 
   # GET /users/new
@@ -70,6 +77,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :slack_name, :slack_id, :avatar, :email, :password)
+      params.require(:user).permit(:slack_name, :slack_id, :small_avatar, :big_avatar)
     end
 end

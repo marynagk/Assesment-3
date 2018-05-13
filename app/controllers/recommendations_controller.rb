@@ -15,7 +15,7 @@ class RecommendationsController < ApplicationController
 
   # GET goals/1/recommendations/new
   def new
-    @recommendation = @goal.recommendations.build
+    @recommendation = @goal.recommendations.build(:author_id => @current_user.id)
   end
 
   # GET goals/1/recommendations/1/edit

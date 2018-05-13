@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
 
 def create
   # Amount in cents
-  @amount = params[:amount].to_i
+  @amount = params[:amount].to_i*100
   @current_user = current_user
   @goal=Goal.find(flash[:id])
   @charity=Charity.last

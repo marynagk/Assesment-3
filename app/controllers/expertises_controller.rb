@@ -10,6 +10,9 @@ class ExpertisesController < ApplicationController
 
   # GET users/1/expertises/1
   def show
+    @event = Event.where('eventable_type = ? AND eventable_id = ?', "Expertise", @expertise.id).last
+    @event = @event || @expertise
+    @users = User.all.where('id !=?', @current_user.id)
   end
 
 
@@ -47,7 +50,7 @@ class ExpertisesController < ApplicationController
     end
     if @expertise.update_attributes(expertise_params)
       if publishing?
-        @expertise.events.build(description: "published a new goal").save!
+        @expertise.events.build(description: "published a new experise").save!
         @expertise.update(status: "1")
         redirect_to([@expertise.user, @expertise], notice: 'Experitise was successfully published.')
       else
@@ -83,5 +86,5 @@ class ExpertisesController < ApplicationController
     def publishing?
       params[:commit] == "Publish"
     end
-    
+
 end

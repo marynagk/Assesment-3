@@ -1,0 +1,28 @@
+<div class="col-1 mt-3">
+  <%= image_tag(@current_user.small_avatar, :class=> "circle_avatars") %>
+</div>
+<div class="col-10 mt-3">
+<%= form_for([@recommendation.goal, @recommendation]) do |form| %>
+  <% if @recommendation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recommendation.errors.count, "error") %> prohibited this recommendation from being saved:</h2>
+
+      <ul>
+      <% @recommendation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <!-- <%= form.text_area :text %> -->
+    <%= form.text_area :text, id: "some-textarea", class: 'wysihtml5', size: '80x8', style: "border-radius: 5px; box-shadow: 0 0 0 1px lightblue; border: 5px solid transparent;" %>
+
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Add recommendation", :class => "btn btn-primary btn-sm" %>
+  </div>
+<% end %>
+</div>

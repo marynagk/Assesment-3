@@ -1,39 +1,142 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid text-white mt-6">
+    <div class="row">
+        <div class="col-12" id="title1" >
+            <div class="ml-4 float-left">
+                <span><%= link_to "CODER ACADEMY", newsfeed_path, style: "color: #31C8F5;" %></span> <span><%= link_to "GANG", newsfeed_path, class: "text-white" %></span>
+            </div>
+            <div class="float-right mr-4" style="font-size: 0.85rem;">
+                    <%= image_tag(@current_user.small_avatar, :style=> "border-radius: 50%; width: 2.2rem;") %>
+                    <span class="mx-2"><%= link_to @current_user.slack_name, user_path(@current_user), :style=> "color: inherit;" %></span>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+            </div>
+        </div>
+    </div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+        <div class="col-12 text-dark pb-4" style="background-color: #EAEAEA">
+    <div class="row">
+      <div class="col-5">
+      </div>
+      <div class="col mt-3">
+              <div class="row"><%= image_tag(@user.big_avatar) %></div>
+      <div class="row mx-3 mt-3"><%= @user.slack_name %></div>
+    </div>
+    <div class="col-5">
+    </div>
+    </div>
 
-<p>
-  <strong>Slack name:</strong>
-  <%= @user.slack_name %>
-</p>
+        <!-- left column (expertises) -->
+      <div class="row">
+        <div class="col-6 text-dark pb-4" style="background-color: #EAEAEA">
+          <div class="row py-3 m-3 text-center font-weight-bold" style="color: #FFD43C; background-color: #595961;">
+            <div class="col-3 text-right mt-2">
 
-<p>
-  <strong>Slack:</strong>
-  <%= @user.slack_id %>
-</p>
+          </div>
+              <div class="col-4 ml-4 mt-2">
+              EXPERTISE
+            </div>
+              <div class="col-4 text-right mt-2">
+                <% if @user == @current_user then %>
+                <span><%= button_to "Add", new_user_expertise_path(@user), :class => "btn btn-primary ml-3", :method => :get %></span>
+                <% end %>
+              </div>
+          </div>
+          <% @expertises.each do |exp| %>
+          <% if exp!=nil then  %>
+          <div class="m-4 bg-white p-4 rounded">
+              <div class="row">
+                  <div class="col-9 my-3 font-weight-bold text-right">
+                    <div class="row">
+                    <% if exp.status == 0 then %>
+                      <span class = "draft_status">DRAFT</span>
+                    <% else %>
+                      <%= exp.events.last.created_at if exp.events.last %>
+                    <% end %>
+                    </div>
+                  </div>
+                  <div class="col-3 text-right mt-2">
+                    <% if exp.user == @current_user then %>
+                    <span><%= button_to "Edit", edit_user_expertise_path(@user, exp), :class => "btn btn-primary ml-3", :method => :get %></span>
+                    <% end %>
+                  </div>
+                  </div>
 
-<p>
-  <strong>Avatar:</strong>
-  <%= @user.avatar %>
-</p>
+                <div class="row">
+                    <div class="col-12 my-3">
+                        <span class="font-italic">
+                            I can help <%= exp.category.name_for_expertises %>...
+                          </span>
+                        <% exp.tags.split(",").each do |tag| %>
+                        <span class="py-1 px-3 rounded" style="background-color: #C2C2C2;"><%= tag %></span>
+                        <% end %>
+                    </div>
+                </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+                <div class="row mt-3 mb-3">
+                  <%= raw exp.description %>
+                </div>
+                  <%= image_tag(exp.image.thumb.url, :style=> "width: 100%;") if exp.image? %>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @user.rating %>
-</p>
+              </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+              <% end %>
+            <% end %>
+            </div>
+
+            <div class="col-6 text-dark pb-4" style="background-color: #EAEAEA">
+              <div class="row py-3 m-3 text-center font-weight-bold" style="color: #FFD43C; background-color: #595961;">
+                <div class="col-3 text-right mt-2">
+
+              </div>
+                  <div class="col-4 ml-4 mt-2">
+                  GOALS
+                </div>
+                  <div class="col-4 text-right mt-2">
+                    <% if @user == @current_user then %>
+                    <span><%= button_to "Add", new_user_goal_path(@user), :class => "btn btn-primary ml-3", :method => :get %></span>
+                    <% end %>
+                  </div>
+              </div>
+              <% @goals.each do |goal| %>
+              <% if goal!=nil then  %>
+              <div class="m-4 bg-white p-4 rounded">
+                  <div class="row">
+                      <div class="col-9 my-3 font-weight-bold text-right">
+                        <div class="row">
+                        <% if goal.status == 0 then %>
+                          <span class = "draft_status">DRAFT</span>
+                        <% else %>
+                          <%= goal.events.last.created_at if goal.events.last %>
+                        <% end %>
+                        </div>
+                      </div>
+                      <div class="col-3 text-right mt-2">
+                        <% if goal.user == @current_user then %>
+                        <span><%= button_to "Edit", edit_user_goal_path(@user, goal), :class => "btn btn-primary ml-3", :method => :get %></span>
+                        <% end %>
+                      </div>
+                      </div>
+
+                    <div class="row">
+                        <div class="col-12 my-3">
+                            <span class="font-italic">
+                                I want to <%= goal.category.name_for_expertises %>...
+                              </span>
+                            <% goal.tags.split(",").each do |tag| %>
+                            <span class="py-1 px-3 rounded" style="background-color: #C2C2C2;"><%= tag %></span>
+                            <% end %>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3 mb-3">
+                      <%= raw goal.description %>
+                    </div>
+                      <%= image_tag(goal.image.thumb.url, :style=> "width: 100%;") if goal.image? %>
+
+                  </div>
+
+                  <% end %>
+                <% end %>
+                </div>
+    </div>
+    </div>
+</div>

@@ -12,15 +12,263 @@
  *
  */
 
+
 @import "bootstrap";
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
+@import "font-awesome";
 
 body {
     background-color: black;
+    padding: 0;
 }
 
-.faces {
-background-image: url("faces.jpg");
-height: 100%;
-width: 100%;
-margin-left: 4em;
+/* stylelint-disable selector-list-comma-newline-after */
+
+
+.debug1 {
+    border: 1px solid red;
+}
+
+.debug2 {
+    border: 1px solid blue;
+}
+
+.debug3 {
+    border: 1px solid green;
+}
+
+.tag {
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    background-color: grey;
+    border-radius: 0.2em;
+
+}
+
+.main {
+    // border-radius: 0.2em;
+    background-color: rgba(200, 200, 200, 1);
+    padding: 1em;
+
+}
+
+.item {
+    // border-radius: 0.2em;
+    background-color: white;
+}
+
+.donate {
+    // border-radius: 0.2em;
+    background-color: lightblue;
+    border-radius: 0.2em;
+    margin: 1em;
+    padding: 1em;
+
+}
+
+.members {
+  background-color: rgba(100, 100, 100, 1);
+  padding: 1em;
+
+}
+
+.circle_avatars {
+  width: 32px;
+  height: 32px;
+  background-size: cover;
+  display: block;
+  border-radius: 100px;
+}
+
+.user_name {
+white-space: normal;
+}
+
+.draft_status {
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+
+    text-align: center;
+    color: orange;
+}
+
+.cut-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 90%;
+  white-space: nowrap;
+}
+
+.cut-text-descr {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  height: 13em;
+  white-space: normal;
+}
+
+#container1 {
+    background: url('faces.jpg') no-repeat top center;
+    background-color: black;
+    background-size: 100%;
+
+}
+
+#title1 {
+    font-family: Raleway;
+    font-style: bold;
+    font-weight: 700;
+    font-size: 20px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#hellogang {
+    margin-top: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 200px;
+    text-align: center;
+
+    font-family: Raleway;
+    font-weight: bold;
+    font-size: 11px;
+
+    border-radius: 0.6rem;
+
+    background-color: rgba(47, 47, 47, 0.95);
+}
+
+.blog-header {
+  line-height: 1;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.blog-header-logo {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-size: 2.25rem;
+}
+
+.blog-header-logo:hover {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+.display-4 {
+  font-size: 2.5rem;
+}
+@media (min-width: 768px) {
+  .display-4 {
+    font-size: 3rem;
+  }
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-scroller .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+}
+
+.card-img-right {
+  height: 100%;
+  border-radius: 0 3px 3px 0;
+}
+
+.flex-auto {
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.h-250 { height: 250px; }
+@media (min-width: 768px) {
+  .h-md-250 { height: 250px; }
+}
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+/*
+ * Blog name and description
+ */
+.blog-title {
+  margin-bottom: 0;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.blog-description {
+  font-size: 1.1rem;
+  color: #999;
+}
+
+@media (min-width: 40em) {
+  .blog-title {
+    font-size: 3.5rem;
+  }
+}
+
+/* Pagination */
+.blog-pagination {
+  margin-bottom: 4rem;
+}
+.blog-pagination > .btn {
+  border-radius: 2rem;
+}
+
+/*
+ * Blog posts
+ */
+.blog-post {
+  margin-bottom: 4rem;
+}
+.blog-post-title {
+  margin-bottom: .25rem;
+  font-size: 2.5rem;
+}
+.blog-post-meta {
+  margin-bottom: 1.25rem;
+  color: #999;
+}
+
+/*
+ * Footer
+ */
+.blog-footer {
+  padding: 2.5rem 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: .05rem solid #e5e5e5;
+}
+.blog-footer p:last-child {
+  margin-bottom: 0;
 }

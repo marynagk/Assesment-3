@@ -1,23 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container-fluid text-white mt-6">
-    <div class="row">
-        <div class="col-12" id="title1" >
-            <div class="ml-4 float-left">
-                <span><%= link_to "CODER ACADEMY", newsfeed_path, style: "color: #31C8F5;" %></span> <span><%= link_to "GANG", newsfeed_path, class: "text-white" %></span>
-            </div>
-            <div class="float-right mr-4" style="font-size: 0.85rem;">
-                    <%= image_tag(@current_user.small_avatar, :style=> "border-radius: 50%; width: 2.2rem;") %>
-                    <span class="mx-2"><%= link_to @current_user.slack_name, user_path(@current_user), :style=> "color: inherit;" %></span>
+<div class="col-12" id="title1" >
+  <span style="color: #31C8F5;">CODER ACADEMY</span> <span style="color: #FFFFFF;">GANG</span>
+</div>
 
-            </div>
-        </div>
-    </div>
+  <div class="container p-0 m-5">
+<div class="row" >
 
-    <div class="row">
-
-  <div class="col-10 text-dark pb-4" style="background-color: #EAEAEA">
-      <div class="m-4 bg-white p-4 rounded">
+  <div class="col-10 main">
+      <div class="container mt-2 mb-2 item">
         <div class="row">
       <div class="col-1 m-1">
           <%= image_tag(@goal.user.small_avatar) %>
@@ -51,7 +42,7 @@
   <% end %>
 
   <div class="row mb-3 ml-3 pt-2 pl-2">
-    <span>I want </span><span><%= @goal.category.name_for_goals %></span><% @goal.tags.split(",").each do |tag| %>
+    <span>Tags: </span><% @goal.tags.split(",").each do |tag| %>
   <span class="tag"><%= tag.strip %></span>
   <% end %>
   </div>
@@ -90,19 +81,21 @@ Recommendations:
 
 </div>
 
-<div class="col-2 px-0" style="background-color: #959595;" >
-
-    <div class="py-3 mb-3 text-center font-weight-bold" style="color: #FFD43C; background-color: #595961;">
-        GANG MEMBERS
+  <div class="col-2 members">
+    <div class="row mb-2 ml-1">
+    <%= User.all.count %> gang mambers:
     </div>
-
-    <% @users.each do |user| %>
-      <div class="mx-3 my-1 cut-text">
-        <%= image_tag(user.small_avatar, :style=> "border-radius: 50%; width: 2.2rem;") %>
-        <span class="mx-2"><%= link_to user.slack_name, user_path(user), :style=> "color: inherit;" %></span>
+    <% User.all.each do |user| %>
+    <div class="row mb-2">
+      <div class="col-25% ml-1">
+          <div><%= image_tag(user.small_avatar, :class=> "circle_avatars") %></div>
       </div>
-    <% end %>
-</div>
+      <div class="col-75% small user_name ml-1">
+          <%= link_to user.slack_name, user_path(user) %>
+        </div>
+  </div>
+  <% end %>
+    </div>
   </div>
       </div>
 

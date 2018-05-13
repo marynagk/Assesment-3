@@ -11,7 +11,10 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require turbolinks
 //= require_tree .
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require bootstrap-wysihtml5
+//= require bootstrap-wysihtml5/locales
