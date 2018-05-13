@@ -7,6 +7,7 @@ class GoalsController < ApplicationController
   # GET users/1/goals
   def index
     @goals = @user.goals
+
   end
 
   def search
@@ -41,6 +42,7 @@ class GoalsController < ApplicationController
     @event = @event || @goal
     @recommendations = @goal.recommendations.all.order(created_at: :desc)
     @recommendation = @goal.recommendations.build
+    @users = User.all.where('id !=?', @current_user.id)
   end
 
 

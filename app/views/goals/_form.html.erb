@@ -12,47 +12,47 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :tags %>
-    <%= form.text_area :tags %>
+    <span><%= form.label :tags %></span>
+    <span class="ml-5"><%= form.text_area :tags, size: '50x1' %></span>
   </div>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= form.label :user_id %>
     <%= form.number_field :user_id %>
-  </div>
+  </div> -->
 
   <div class="field">
-    <%= form.label :category_id %>
-    <%= form.number_field :category_id %>
+    <%= form.label :category_id, "I want" %>
+  <span class="ml-5"><%= form.collection_select :category_id, Category.order(:id), :id, :name_for_goals %></span>
   </div>
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.file_field :image %>
-  <div class="field">
-        <%= form.label "remove_image" %>
+    <span class="ml-5"><%= form.file_field :image %></span>
+  <span class="field">
       <%= form.check_box :remove_image %>
-  </div>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %><br />
-    <%= form.text_area :description, id: "some-textarea", class: 'wysihtml5', size: '90x15', style: "border-radius: 5px; box-shadow: 0 0 0 1px lightblue; border: 5px solid transparent;" %>
-
+        <%= form.label "remove_image" %>
+  </span>
   </div>
 
   <div class="field">
+    <!-- <%= form.label :description %><br /> -->
+    <%= form.text_area :description, id: "some-textarea", class: 'wysihtml5', size: '80x10', style: "border-radius: 5px; box-shadow: 0 0 0 1px lightblue; border: 5px solid transparent;" %>
+
+  </div>
+
+  <!-- <div class="field">
     <%= form.label :status %>
     <%= form.number_field :status %>
-  </div>
+  </div> -->
 
   <% if @goal.status == 0 %>
-  <div class="actions">
-    <%= form.submit "Save as Draft" %>
-  </div>
-  <div class="actions">
-    <%= form.submit "Publish" %>
-  </div>
+  <span class="actions">
+    <%= form.submit "Save as Draft", :class => "btn btn-secondary ml-3 mt-2" %>
+  </span>
+  <span class="actions">
+    <%= form.submit "Publish", :class => "btn btn-primary ml-3 mt-2" %>
+  </span>
   <% else %>
   <div class="actions">
     <%= form.submit "Update" %>

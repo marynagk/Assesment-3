@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Category.destroy_all # vs. .delete_all
-Category.create! name_for_goals: 'to implement', name_for_expertises: 'implementing'
-Category.create! name_for_goals: 'to learn', name_for_expertises: 'learning'
-Category.create! name_for_goals: 'to connect', name_for_expertises: 'connecting'
-Category.create! name_for_goals: 'to visit', name_for_expertises: 'visiting'
+Category.create! name_for_goals: 'to implement', name_for_expertises: 'to implement'
+Category.create! name_for_goals: 'to learn', name_for_expertises: 'to learn'
+Category.create! name_for_goals: 'to connect', name_for_expertises: 'to connect'
+Category.create! name_for_goals: 'to visit', name_for_expertises: 'to visit'
 Charity.destroy_all
 Charity.create! name: 'Garvan Institute of Medical Research', url: 'https://www.garvan.org.au/'
 

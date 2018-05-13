@@ -10,6 +10,9 @@ class ExpertisesController < ApplicationController
 
   # GET users/1/expertises/1
   def show
+    @event = Event.where('eventable_type = ? AND eventable_id = ?', "Expertise", @expertise.id).last
+    @event = @event || @expertise
+    @users = User.all.where('id !=?', @current_user.id)
   end
 
 
