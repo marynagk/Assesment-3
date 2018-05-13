@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
   get 'newsfeed', to: 'events#index'
-  match 'search', to: 'goals#search', via: [:get, :post]
+  match 'search', to: 'events#index', via: [:get, :post]
   match 'goals', to: 'goals#search', via: [:get, :post]
 end

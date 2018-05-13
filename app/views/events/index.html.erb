@@ -1,18 +1,94 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid text-white mt-6">
+    <div class="row">
+        <div class="col-12" id="title1" >
+            <div class="ml-4 float-left">
+                <span style="color: #31C8F5;">CODER ACADEMY</span> <span class="text-white">GANG</span>
+            </div>
+            <div class="float-right mr-4" style="font-size: 0.85rem;">
+                    <%= image_tag(@current_user.small_avatar, :style=> "border-radius: 50%; width: 2.2rem;") %>
+                    <span class="mx-2"><%= link_to @current_user.slack_name, user_path(@current_user), :style=> "color: inherit;" %></span>
 
-<h1>News Feed</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- left column (tags) -->
+    <div class="row">
+        <div class="col-2 px-0" style="background-color: #959595; line-height: 2rem;" >
+            <div class="py-3 mb-2 text-center font-weight-bold" style="color: #FFD43C; background-color: #595961;">
+                GOALS/EXPERTISE<br/>
+                <%= form_tag(search_path) do %>
+                <%= text_field_tag :search, params[:search], class: "rounded my-1 px-1", size: "15", type: "text", placeholder: "Find..." %>
+                <%= submit_tag 'Search', name: nil %>
+                <% end %>
+              </input>
+            </div>
+            <% @tags.each do |category, tags| %>
+              <div class="mx-2 text-center" style="clear: both; color: #A4EDFF;"><%= category %></div>
+                  <% tags.each do |tag| %>
+              <div class="m-2 px-3 rounded text-justify" style="line-height: 1.3rem; background-color: #C2C2C2; width: fit-content; float: left;">
+                <%= link_to tag, search_path(:search => tag), :style=> "color: inherit;" %></div>
+                    <% end %>
+                <% end %>
+
+        </div>
+
+        <!-- center column (messages) -->
+        <div class="col-8 text-dark pb-4" style="background-color: #EAEAEA">
+          <% @events.each do |event| %>
+          <div class="m-4 bg-white p-4 rounded">
+              <div class="row">
+                  <div class="col-8 my-3">
+                    <%= image_tag(event.eventable.user.small_avatar) %>
+                    <span class="font-weight-bold mx-2"><%= link_to event.eventable.user.slack_name, user_path(event.eventable.user), :style=> "color: inherit;" %></span>
+                    <span><%= link_to event.description, user_goal_path(event.eventable.user, event.eventable), :style=> "color: inherit; text-decoration: underline;" if event.eventable_type=="Goal"  %>
+                    <%= link_to event.description, user_expertise_path(event.eventable.user, event.eventable), :style=> "color: inherit; text-decoration: underline;" if event.eventable_type=="Expertise" %></span>
+                  </div>
+                  <div class="col-3 my-3 font-weight-bold text-right">
+                      <%= event.created_at.strftime("%m/%d/%Y %H:%M") %>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 my-3">
+                        <span class="font-italic">
+                          <% if event.eventable_type=="Goal" %>
+                            I want <%= event.eventable.category.name_for_goals %>...
+                          <% else %>
+                            I can help <%= event.eventable.category.name_for_expertises %>...
+                          <% end %>
+                          </span>
+                        <% event.eventable.tags.split(",").each do |tag| %>
+                        <span class="py-1 px-3 rounded" style="background-color: #C2C2C2;"><%= tag %></span>
+                        <% end %>
+                    </div>
+                </div>
 
 
-    <% @events.each do |event| %>
-      <div>
-        ----------------
-        <div><%= event.created_at %></div>
-        <div><%= event.eventable.user.slack_name %></div>
-        <div><%= event.description %></div>
-        <div><%= event.eventable.tags %></div>
-        <div><%= event.eventable.description %></div>
+                <div class="m-4 bg-white p-4 rounded">
+                <div class="row">
+                  <%= raw event.eventable.description %>
+                </div>
+                  <%= image_tag(event.eventable.image.thumb.url) if event.eventable.image? %>
 
-      </div>
-    <% end %>
+              </div>
+            </div>
+              <% end %>
+            </div>
 
-<br>
+        <!-- right column (members) -->
+        <div class="col-2 px-0" style="background-color: #959595;" >
+
+            <div class="py-3 mb-3 text-center font-weight-bold" style="color: #FFD43C; background-color: #595961;">
+                GANG MEMBERS
+            </div>
+
+            <% @users.each do |user| %>
+              <div class="mx-3 my-1 cut-text">
+                <%= image_tag(user.small_avatar, :style=> "border-radius: 50%; width: 2.2rem;") %>
+                <span class="mx-2"><%= link_to user.slack_name, user_path(user), :style=> "color: inherit;" %></span>
+              </div>
+            <% end %>
+        </div>
+
+    </div>
+</div>
