@@ -19,7 +19,8 @@
 
         <%= render 'form' %>
         <%= link_to 'Show', [@expertise.user, @expertise] %> |
-        <%= link_to 'Back', user_path(@expertise.user) %>
+        <%= link_to 'Back', user_path(@expertise.user) %> |
+        <%= link_to 'Delete', [@expertise.user, @expertise], method: :delete, data: { confirm: 'Are you sure?' } %>
 
     </div>
 

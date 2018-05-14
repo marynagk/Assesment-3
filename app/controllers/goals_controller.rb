@@ -101,9 +101,13 @@ class GoalsController < ApplicationController
 
   # DELETE users/1/goals/1
   def destroy
+    events = Event.where('eventable_id = ? AND eventable_type = ?', @goal.id, "Goal")
+    events.each do |event|
+      event.destroy
+    end
     @goal.destroy
+    redirect_to user_url(@user)
 
-    redirect_to user_goals_url(@user)
   end
 
   private

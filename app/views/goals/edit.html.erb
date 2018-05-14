@@ -19,7 +19,8 @@
         <%= render 'form' %>
 
         <%= link_to 'Show', [@goal.user, @goal] %> |
-        <%= link_to 'Back', user_path(@goal.user) %>
+        <%= link_to 'Back', user_path(@goal.user) %> |
+        <%= link_to 'Delete', [@goal.user, @goal], method: :delete, data: { confirm: 'Are you sure?' } %>
 
     </div>
 

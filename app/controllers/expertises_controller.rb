@@ -63,9 +63,14 @@ class ExpertisesController < ApplicationController
 
   # DELETE users/1/expertises/1
   def destroy
+    events = Event.where('eventable_id = ? AND eventable_type = ?', @expertise.id, "Expertise")
+    events.each do |event|
+      event.destroy
+    end
     @expertise.destroy
 
-    redirect_to user_expertises_url(@user)
+    redirect_to user_url(@user)
+
   end
 
   private
