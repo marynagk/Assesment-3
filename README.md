@@ -1,5 +1,22 @@
 
+# Coder Academy Gang
+Completed as a major assessment in [Coder Academy's](https://coderacademy.edu.au/) Fast Track Bootcamp.
 
+View live: https://cagang.herokuapp.com/
+
+**Table of Contents**
+* [Problem Definition and Solution](#problem-definition-and-solution)
+  + [Problem](#problem)
+ exist?](#what-s-wrong-with-the-sites-that-already-exist-)
+  + [Solution](#solution)
+* [User Stories](#user-stories)
+  + [Preliminary User Stories](#preliminary-user-stories)
+  + [Detailed User Stories](#detailed-user-stories)
+* [Workflow](#workflow)
+* [Style Guide](#style-guide)
+* [Wireframes](#wireframes)
+* [ERD](#erd)
+* [Trello](#trello)
 
 ## Problem Definition and Solution
  ### Problem
@@ -13,7 +30,7 @@ One of the challenges the world is facing nowadays is the increased value of tim
 
 Taking into account all of the above there is an opportunity to boost the study goals achievement for the students by providing some platform where they can interact with the focus on the goals achievement.
 
-The criterion for the successful solution of this challenge will be:
+The criteria for the successful solution of this challenge will be:
 - Safe environment - closed group interaction not visible to the non-members of the group
 - Accessibility - students can access the solution from class or from home
 - Possibility to share with the others the goals (problem/dream) where help is needed
@@ -22,11 +39,24 @@ The criterion for the successful solution of this challenge will be:
 - Tracking the status of goals
 - Acknowledgement of help provided by other users
 
-No web tools have been found by me meeting the above criterion
+No web tools have been found by me meeting the above criteria
 ###  Solution
 The solution is a Coder Academy Gang - a social network for the Coderacademy group which allows to share students' personal and professional goals and expertise, and to give each other recommendations helping to achieve those goals.
 
-##  Detailed User Stories
+
+
+## User Stories
+
+Preliminary user stories were collected in Trello, with more detailed user stories subsequently created.
+
+### Preliminary User Stories
+
+![trello](/readme_resources/user_stories.png)
+
+###  Detailed User Stories
+
+Some of the users stories below has been changed in the course of development.
+
 _**Visitor should be able to register**_
 As a visitor I want to be able to register to be able to benefit from the project
 
@@ -129,6 +159,25 @@ As a user I want to be able to make a donation to charity if someone has helped 
 
 ![User workflow diagram](/readme_resources/Pages_sequence.png)
 
+## Wireframes
+![Landing page](/readme_resources/wireframes1.png)
+![Newsfeed](/readme_resources/wireframes2.png)
+![Mobile devices](/readme_resources/wireframes3.png)
+
+## Style Guide
+
+olours and fonts were chosen as below.
+
+![colours](/readme_resources/color_scheme.png)
+
+![fonts](/readme_resources/fonts.png)
+
+Raleway is an elegant sans-serif typeface, designed in a single thin weight. It is a display face that features both old style and lining numerals, standard and discretionary ligatures, a pretty complete set of diacritics, as well as a stylistic alternate inspired by more geometric sans-serif typefaces than it's neo-grotesque inspired default character set.
+
 ## ERD
 
 ![Entity Relationship Diagram](/readme_resources/ERD.jpg)
+
+## Trello
+
+![Trello](/readme_resources/trello2.png)
