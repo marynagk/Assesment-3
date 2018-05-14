@@ -52,9 +52,9 @@
                     <div class="col-12 my-3">
                         <span class="font-italic">
                           <% if event.eventable_type=="Goal" %>
-                            I want <%= event.eventable.category.name_for_goals %>...
+                            I want <%= event.eventable.category.name_for_goals %>:
                           <% else %>
-                            I can help <%= event.eventable.category.name_for_expertises %>...
+                            I can help <%= event.eventable.category.name_for_expertises %>:
                           <% end %>
                           </span>
                         <% event.eventable.tags.split(",").each do |tag| %>

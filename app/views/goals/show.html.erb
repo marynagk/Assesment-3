@@ -31,7 +31,7 @@
         <% if @goal.status == 0 then %>
           <span class = "draft_status">DRAFT</span>
         <% else %>
-          <%= @event.created_at %>
+          <%= @event.created_at.strftime("%m/%d/%Y %H:%M") %>
         <% end %>
         </div>
       </div>
@@ -51,7 +51,8 @@
   <% end %>
 
   <div class="row mb-3 ml-3 pt-2 pl-2">
-    <span>I want </span><span><%= @goal.category.name_for_goals %></span><% @goal.tags.split(",").each do |tag| %>
+    I want <%= @goal.category.name_for_goals %>:
+    <% @goal.tags.split(",").each do |tag| %>
   <span class="tag"><%= tag.strip %></span>
   <% end %>
   </div>

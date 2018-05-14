@@ -31,7 +31,7 @@
         <% if @expertise.status == 0 then %>
           <span class = "draft_status">DRAFT</span>
         <% else %>
-          <%= @event.created_at %>
+          <%= @event.created_at.strftime("%m/%d/%Y %H:%M") %>
         <% end %>
         </div>
       </div>
@@ -44,7 +44,8 @@
 
 
   <div class="row mb-3 ml-3 pt-2 pl-2">
-    <span>I can help </span><span><%= @expertise.category.name_for_expertises %></span><% @expertise.tags.split(",").each do |tag| %>
+    I can help <%= @expertise.category.name_for_expertises %>:
+    <% @expertise.tags.split(",").each do |tag| %>
   <span class="tag"><%= tag.strip %></span>
   <% end %>
   </div>

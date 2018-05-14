@@ -62,7 +62,7 @@ class GoalsController < ApplicationController
 
     if @goal.save
       if publishing?
-        @goal.events.build(description: "published a new goal").save!
+        @goal.events.build(description: "published new goal").save!
         @goal.update(status: "1")
         redirect_to([@goal.user, @goal], notice: 'Goal was successfully published.')
       else
@@ -88,7 +88,7 @@ class GoalsController < ApplicationController
     # end
     if @goal.update_attributes(goal_params)
       if publishing?
-        @goal.events.build(description: "published a new goal").save!
+        @goal.events.build(description: "published new goal").save!
         @goal.update(status: "1")
         redirect_to([@goal.user, @goal], notice: 'Goal was successfully published.')
       else

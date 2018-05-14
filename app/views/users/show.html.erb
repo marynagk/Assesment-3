@@ -49,7 +49,7 @@
                     <% if exp.status == 0 then %>
                       <span class = "draft_status">DRAFT</span>
                     <% else %>
-                      <%= exp.events.last.created_at if exp.events.last %>
+                      <%= exp.events.last.created_at.strftime("%m/%d/%Y %H:%M") if exp.events.last %>
                     <% end %>
                     </div>
                   </div>
@@ -63,7 +63,7 @@
                 <div class="row">
                     <div class="col-12 my-3">
                         <span class="font-italic">
-                            I can help <%= exp.category.name_for_expertises %>...
+                            I can help <%= exp.category.name_for_expertises %>:
                           </span>
                         <% exp.tags.split(",").each do |tag| %>
                         <span class="py-1 px-3 rounded" style="background-color: #C2C2C2;"><%= tag %></span>
@@ -105,7 +105,7 @@
                         <% if goal.status == 0 then %>
                           <span class = "draft_status">DRAFT</span>
                         <% else %>
-                          <%= goal.events.last.created_at if goal.events.last %>
+                          <%= goal.events.last.created_at.strftime("%m/%d/%Y %H:%M") if goal.events.last %>
                         <% end %>
                         </div>
                       </div>
@@ -119,7 +119,7 @@
                     <div class="row">
                         <div class="col-12 my-3">
                             <span class="font-italic">
-                                I want to <%= goal.category.name_for_expertises %>...
+                                I want to <%= goal.category.name_for_expertises %>:
                               </span>
                             <% goal.tags.split(",").each do |tag| %>
                             <span class="py-1 px-3 rounded" style="background-color: #C2C2C2;"><%= tag %></span>

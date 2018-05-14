@@ -12,11 +12,11 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     if @user == @current_user then
-      @goals = @user.goals
-      @expertises = @user.expertises
+      @goals = @user.goals.order(created_at: :desc)
+      @expertises = @user.expertises.order(created_at: :desc)
     else
-      @goals = @user.goals.where('status = ?', 1)
-      @expertises = @user.expertises.where('status = ?', 1)
+      @goals = @user.goals.where('status = ?', 1).order(created_at: :desc)
+      @expertises = @user.expertises.where('status = ?', 1).order(created_at: :desc)
     end
   end
 
