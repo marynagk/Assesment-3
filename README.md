@@ -7,7 +7,6 @@ View live: https://cagang.herokuapp.com/
 **Table of Contents**
 * [Problem Definition and Solution](#problem-definition-and-solution)
   + [Problem](#problem)
- exist?](#what-s-wrong-with-the-sites-that-already-exist-)
   + [Solution](#solution)
 * [User Stories](#user-stories)
   + [Preliminary User Stories](#preliminary-user-stories)
